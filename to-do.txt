@@ -1,0 +1,31 @@
+=GOAL (MVP)=
+The minimum viable product for Sepia Journal is:
+- a .NET backend
+- MongoDB hosted in cloud
+- a frontend with React/Tailwind
+- basic authentication and account login
+- hosted with AWS
+- the user can log in and post journal entries. These journal entries are automatically dated, up to 5000 characters each, and the user can read then in a successive feed. The user's page can also be shared publicly with others - people can freely read it without logging in. (The URL slug format is probably www.journalsite.com/username/journal-entry-random-gen-code.)
+
+=HIGH-LEVEL STEPS=
+- Set up minimal .NET backend with basic frontend Hello World that can go online right away.
+- Attach it to AWS instance and maybe set up a free basic domain with it for now. Make sure it can be accessed online.
+- Attach MongoDB to it and test with data.
+- Set up basic auth/account login and track it with DB.
+- Build up ability to post journal entries that are dated.
+- Create ability to view a user's public journal feed of entries.
+
+***********
+
+Start with an integreation test for the walking skeleton:
+
+-user visits website (hosted on the cloud)
+-user logs in
+-user is able to successfully authenticate with password
+-sees a list of his recent dated journal entries in an organized feed, from most to least recent
+-he clicks New Post and gets taken to a new screen to post
+-he writes a quick entry and clicks Post
+-he gets taken back to his feed; the new post is in the list now, showing up at the top and dated most recent
+-he wants to share this with someone, so he grabs the URL of his journal page
+-he posts it elsewhere and someone else opens it up in a different browser
+-the reader doesn't need to log in, they're taken to the feed and can read them in order; but doesn't have the option to make a new post

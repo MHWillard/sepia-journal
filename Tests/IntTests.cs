@@ -28,8 +28,8 @@ namespace Tests
         public void Test_WalkingSkeleton() {
             //-user visits website(hosted on the cloud)
             IWebDriver driver = new ChromeDriver();
-            string websiteURL = "http://sepia-journal-env-5.eba-vuhpp7mp.us-east-2.elasticbeanstalk.com/"; //sepiajournalsite
-            //string websiteURL = 
+            //string websiteURL = "http://sepia-journal-env-5.eba-vuhpp7mp.us-east-2.elasticbeanstalk.com/"; //sepiajournalsite
+            string websiteURL = "https://localhost:44440/";
             driver.Navigate().GoToUrl(websiteURL);
             var title = driver.Title;
             title.Should().Be("Sepia Journal - Home");

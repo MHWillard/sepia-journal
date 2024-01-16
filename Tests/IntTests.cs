@@ -54,7 +54,7 @@ namespace Tests
             //-sees a list of his recent dated journal entries in an organized feed, from most to least recent
             List<string> posts = new List<string>() { "first post", "second post", "third post" };
 
-            IWebElement feed = driver.FindElement(By.Id("post-feed"));
+            IWebElement feed = driver.FindElement(By.Id("journal-feed"));
             IList<IWebElement> feedPosts = feed.FindElements(By.ClassName("journal-post"));
             for (int i = 0; i < posts.Count; i++)
             {
@@ -62,7 +62,7 @@ namespace Tests
             }
 
             //- he clicks New Post and gets taken to a new screen to post
-            var newPostButton = driver.FindElement(By.Id("login-button"));
+            var newPostButton = driver.FindElement(By.Id("new-post-button"));
             newPostButton.Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
             title = driver.Title;

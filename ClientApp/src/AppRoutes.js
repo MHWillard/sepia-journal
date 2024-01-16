@@ -2,6 +2,7 @@ import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
 import Feed from './components/Feed.js';
+import NewPost from "./components/NewPost.js";
 
 const AppRoutes = [
   {
@@ -19,7 +20,11 @@ const AppRoutes = [
   {
     path: '/feed',
     element: <Feed />
-  }
+    },
+    {
+        path: '/new-post',
+        element: <NewPost />
+    }
 ];
 
 export default AppRoutes;

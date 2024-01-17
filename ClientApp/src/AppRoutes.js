@@ -4,6 +4,8 @@ import { Home } from "./components/Home";
 import Feed from './components/Feed.js';
 import NewPost from "./components/NewPost.js";
 
+//maybe set state here and bleed itg down to Feed?
+
 const AppRoutes = [
   {
     index: true,

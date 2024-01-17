@@ -5,7 +5,7 @@ export default function NewPost() {
     return (
         <div id="post-body">
             <div id="post-text-box">
-                <form>
+                <form action="https://localhost:44440/feed">
                     <textarea id="new-post-textbox">text</textarea><br></br>
                     <button type="submit" id="submit-post-button">Submit Post</button>
                 </form>

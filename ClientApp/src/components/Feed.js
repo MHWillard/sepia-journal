@@ -1,9 +1,13 @@
 import DocumentTitle from "./DocumentTitle.js"
+import React, { useState } from 'react';
 
-//            IWebElement feed = driver.FindElement(By.Id("post-feed"));
-//IList < IWebElement > feedPosts = feed.FindElements(By.ClassName("journal-post"));
+//Needs to get posts state and bleed this into the feed-body
 
 export default function Feed() {
+    const [posts, setPosts] = useState([]); //map this into the div journal-post classes
+    //posts: [{"id": 1, "content": "post-content-here"}]
+    //in full version: this data pulls from the user's post table data and fills it in
+
     DocumentTitle("Sepia Journal - testinguser's Journal")
     return (
         <div id="feed-body">

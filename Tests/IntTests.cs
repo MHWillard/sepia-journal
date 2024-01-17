@@ -72,6 +72,7 @@ namespace Tests
             string newPost = "fourth post, this is the one";
             var postTextBox = driver.FindElement(By.Id("new-post-textbox"));
             var submitButton = driver.FindElement(By.Id("submit-post-button"));
+            postTextBox.SendKeys(newPost);
             submitButton.Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
             title = driver.Title;

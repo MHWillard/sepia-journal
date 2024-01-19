@@ -21,12 +21,14 @@ const AppRoutes = [
     },
   {
     path: '/feed',
-    element: <Feed />
+    element: <Feed /> //public URL state here?
     },
     {
         path: '/new-post',
         element: <NewPost />
     }
+    //route where RL = username to produce that user's posts: PublicFeed
+    //other route is PersonalFeed which depends on logged in user's information to grab right one
 ];
 
 export default AppRoutes;

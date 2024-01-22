@@ -44,3 +44,10 @@ How to handle state?
 <PublicFeed>: when this loads, it takes the URL slug, polls the DB, then returns that user's posts. (if unable to do so, it returns a generic error. But a bad URL enters a generic 404 to begin with.) It would only get that user's public posts. Get state within this component.
 
 <LoggedInFeed> a user's personal feed when logged in. This grabs state and other user info when logged in and bleeds in here, but it checks for login first. This probably needs state from the top-down App.
+
+FOR TRACER BULLET: stick with public feed states and post first
+
+1/22
+App gets overall state: needs to bleed down to appropriate Routes
+1. get rid of AppRoutes object and hardcode
+2. figure out how to dump into the AppRoutes map

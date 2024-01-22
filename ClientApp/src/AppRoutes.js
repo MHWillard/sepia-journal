@@ -1,7 +1,7 @@
 import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
-import Feed from './components/Feed.js';
+import PublicFeed from './components/PublicFeed.js';
 import NewPost from "./components/NewPost.js";
 
 //maybe set state here and bleed itg down to Feed?
@@ -21,7 +21,7 @@ const AppRoutes = [
     },
   {
     path: '/feed',
-    element: <Feed /> //public URL state here?
+    element: <PublicFeed /> //public URL state here?
     },
     {
         path: '/new-post',

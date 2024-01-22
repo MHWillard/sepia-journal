@@ -1,13 +1,26 @@
 import DocumentTitle from "./DocumentTitle.js"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //Needs to get posts state and bleed this into the feed-body
 
-export default function Feed() {
-    const [posts, setPosts] = useState([]); //map this into the div journal-post classes
+export default function PublicFeed() {
+    const [publicUser, setPublicUser] = useState([]); //publicUserID and PublicUsername together
+    const [publicUserPosts, setPublicUserPosts] = useState([]); //later: {} nested objects
     //posts: [{"id": 1, "content": "post-content-here"}]
+    //publicUserFeed: [{"publicUserID:" xxxx, "publicUsername": xxxxx, publicUserPosts: [{xxxxx, xxxxx}]}]
     //in full version: this data pulls from the user's post table data and fills it in
 
+    function getPosts() {
+        var posts = ['first post', 'second post', 'third post']
+        return posts
+    }
+
+    useEffect(() => {
+        const newPosts = getPosts();
+        setPublicUserPosts(newPosts);
+        }, []);
+
+        //then in feed: get publicUserPosts and map over the div
     DocumentTitle("Sepia Journal - testinguser's Journal")
     return (
         <div id="feed-body">

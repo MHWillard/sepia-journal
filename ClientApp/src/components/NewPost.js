@@ -1,7 +1,12 @@
 import DocumentTitle from "./DocumentTitle.js"
+import { PostsContext } from "../contexts/PostsContext.js"
+import React, { useContext } from 'react';
 
 export default function NewPost() {
     DocumentTitle("Sepia Journal - testinguser's Journal - New Post")
+
+    const { setPublicUserPosts } = useContext(PostsContext);
+
     return (
         <div id="post-body">
             <div id="post-text-box">

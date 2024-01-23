@@ -80,7 +80,7 @@ namespace Tests
 
             //- he gets taken back to his feed; the new post is in the list now, showing up at the top and dated most recent
             posts.Add(newPost);
-            feed = driver.FindElement(By.Id("post-feed"));
+            feed = driver.FindElement(By.Id("journal-feed"));
             feedPosts = feed.FindElements(By.ClassName("journal-post"));
             for (int i = 0; i < posts.Count; i++)
             {

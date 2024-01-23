@@ -51,3 +51,13 @@ FOR TRACER BULLET: stick with public feed states and post first
 App gets overall state: needs to bleed down to appropriate Routes
 1. get rid of AppRoutes object and hardcode
 2. figure out how to dump into the AppRoutes map
+
+1/23
+For first version: NewPost directly updates the PublicFeed state.
+In the future, it hits the DB and adds it there and PublicFeed is pulling from that instead.
+
+Deciding to use state context to help with the React Router side.
+1. Set the context in a seperate file (in the future, this'll consume maybe from the controller)
+2. The relevant components must then use this context.
+3. App.js sends down state and effects as context.
+4. PublicFeed and NewPost also consume this context that's sent down in order to do things.

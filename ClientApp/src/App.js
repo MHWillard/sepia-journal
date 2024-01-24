@@ -33,15 +33,16 @@ export default function App() {
     const [publicUser, setPublicUser] = useState([]); //publicUserID and PublicUsername together
     const [publicUserPosts, setPublicUserPosts] = useState([]); //later: {} nested objects
 
-    function getPosts() {
-        var posts = ['first post', 'second post', 'third post']
-        return posts
-    }
+        
+        function getPosts() {
+            var posts = ['1']
+            return posts
+        }
 
-    useEffect(() => {
-        const newPosts = getPosts();
-        setPublicUserPosts(newPosts);
-    }, []);
+        useEffect(() => {
+            const newPosts = getPosts();
+            setPublicUserPosts(newPosts);
+        }, []);
 
     return (
         <PostsContext.Provider value={{publicUserPosts, setPublicUserPosts}}>

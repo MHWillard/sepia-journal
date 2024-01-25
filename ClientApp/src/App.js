@@ -31,11 +31,11 @@ export default function App() {
     const displayName = App.name;
 
     const [publicUser, setPublicUser] = useState([]); //publicUserID and PublicUsername together
-    const [publicUserPosts, setPublicUserPosts] = useState([]); //later: {} nested objects
+    const [publicUserPosts, setPublicUserPosts] = useState('a'); //later: {} nested objects
 
         
         function getPosts() {
-            var posts = ['1']
+            var posts = ['1','2']
             return posts
         }
 
@@ -45,7 +45,7 @@ export default function App() {
         }, []);
 
     return (
-        <PostsContext.Provider value={{publicUserPosts, setPublicUserPosts}}>
+        <PostsContext.Provider value={{ publicUserPosts, setPublicUserPosts }}>
         <Layout>
             <Routes>
                 {AppRoutes.map((route, index) => {

@@ -6,7 +6,7 @@ import React, { useState, useEffect, useContext } from 'react';
 
 export default function PublicFeed() {
 
-    const publicUserPosts = useContext(PostsContext);
+    const { publicUserPosts, setPublicUserPosts } = useContext(PostsContext);
     //const publicUserPosts = ['1', '2']
 
     /*
@@ -22,7 +22,13 @@ export default function PublicFeed() {
     return (
         <div id="feed-body">
             <div id="journal-feed">
-
+                <div class="journal-post">
+                    {publicUserPosts.map((item, index) => (
+                        <div class="journal-post" key={index}>
+                            <p>{item}</p>
+                        </div>
+                    ))}
+                </div>
         </div>
             <div>
                 <form action="https://localhost:44440/new-post">

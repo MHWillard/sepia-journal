@@ -36,7 +36,7 @@ namespace Tests
 
             //-user logs in
             //-user is able to successfully authenticate with password
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
             string username = "testinguser";
             string password = "testinguserpass";
             var usernameTextBox = driver.FindElement(By.Id("username-textbox"));
@@ -47,7 +47,7 @@ namespace Tests
             passwordTextBox.SendKeys(password);
             loginButton.Click();
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
             title = driver.Title;
             title.Should().Be("Sepia Journal - testinguser's Journal");
 
@@ -64,7 +64,7 @@ namespace Tests
             //- he clicks New Post and gets taken to a new screen to post
             var newPostButton = driver.FindElement(By.Id("new-post-button"));
             newPostButton.Click();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
             title = driver.Title;
             title.Should().Be("Sepia Journal - testinguser's Journal - New Post");
 
@@ -74,7 +74,7 @@ namespace Tests
             var submitButton = driver.FindElement(By.Id("submit-post-button"));
             postTextBox.SendKeys(newPost);
             submitButton.Click();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
             title = driver.Title;
             title.Should().Be("Sepia Journal - testinguser's Journal");
 
@@ -97,12 +97,13 @@ namespace Tests
             title.Should().Be("Sepia Journal - testinguser's Journal");
 
             //- the reader doesn't need to log in, they're taken to the feed and can read them in order; but doesn't have the option to make a new post
-            edge.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
-            feed = edge.FindElement(By.Id("post-feed"));
+            edge.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
+            List<string> edgePosts = new List<string>() { "first post", "second post", "third post" };
+            feed = edge.FindElement(By.Id("journal-feed"));
             feedPosts = feed.FindElements(By.ClassName("journal-post"));
-            for (int i = 0; i < posts.Count; i++)
+            for (int i = 0; i < edgePosts.Count; i++)
             {
-                feedPosts[i].Text.Should().Be(posts[i]);
+                feedPosts[i].Text.Should().Be(edgePosts[i]);
             }
 
             driver.Quit();

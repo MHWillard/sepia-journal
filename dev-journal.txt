@@ -61,3 +61,8 @@ Deciding to use state context to help with the React Router side.
 2. The relevant components must then use this context.
 3. App.js sends down state and effects as context.
 4. PublicFeed and NewPost also consume this context that's sent down in order to do things.
+
+1/27
+We essentially now have a very, very basic walking skeleton. Next thing to do is to upload this version onto AWS. Then, we can start to develop the actual DB for authentication and storing posts.
+
+https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-beanstalk-traditional.html

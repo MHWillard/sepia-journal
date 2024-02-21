@@ -1,6 +1,6 @@
 import DocumentTitle from "./DocumentTitle.js"
 import { PostsContext } from "../contexts/PostsContext.js"
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function NewPost() {
@@ -16,6 +16,10 @@ export default function NewPost() {
         setPublicUserPosts(publicUserPosts);
         navigate('/feed');
     }
+
+    useEffect(() => {
+        navigate("/404")
+    });
 
     return (
         <div id="post-body">

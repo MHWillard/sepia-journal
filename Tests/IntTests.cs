@@ -130,7 +130,7 @@ namespace Tests
             loginButton.Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
             driver.Title.Should().Be("Sepia Journal - Login");
-            var createAccountLink = driver.FindElement(By.Id("create-new-account-link"));
+            var createAccountLink = driver.FindElement(By.Id("create-account-button"));
             createAccountLink.Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
             driver.Title.Should().Be("Sepia Journal - Create New Account");
@@ -139,7 +139,7 @@ namespace Tests
             var emailTextBox = driver.FindElement(By.Id("email-textbox"));
             var usernameTextBox = driver.FindElement(By.Id("username-textbox"));
             var passwordTextBox = driver.FindElement(By.Id("password-textbox"));
-            var createAccountButton = driver.FindElement(By.Id("create-account-button"));
+            var createAccountButton = driver.FindElement(By.Id("submit-create-account"));
 
             emailTextBox.SendKeys("bill@billslint.com");
             usernameTextBox.SendKeys("LinterBoy");
@@ -147,24 +147,29 @@ namespace Tests
             createAccountButton.Click();
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
-            var errorBox = driver.FindElement(By.Id("error-box"));
+            var errorBox = driver.FindElement(By.Id("error-box-password"));
             Boolean errorBoxShows = errorBox.Displayed;
             string errorText = errorBox.Text;
             errorBoxShows.Should().BeTrue();
             errorText.Should().Be("This password doesn't fit password criteria. Make sure the password is at least eight characters long, contains at least one number, at least one capital letter, and at least one special character.");
 
-//He revises his password and puts in a new one. He then tries to create the new account again, but unfortunately, his chosen username doesn't work - a user already has it. So he modifies it, and it's accepted.
+            //He revises his password and puts in a new one. He then tries to create the new account again, but unfortunately, his chosen username doesn't work - a user already has it. So he modifies it, and it's accepted.
+            passwordTextBox = driver.FindElement(By.Id("password-textbox"));
+            createAccountButton = driver.FindElement(By.Id("submit-create-account"));
+
             passwordTextBox.SendKeys("Lintboy2000!");
             createAccountButton.Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
 
-            errorBox = driver.FindElement(By.Id("error-box"));
+            errorBox = driver.FindElement(By.Id("error-box-username"));
             errorBoxShows = errorBox.Displayed;
             errorText = errorBox.Text;
             errorBoxShows.Should().BeTrue();
             errorText.Should().Be("This username already exists. Please pick a different one.");
 
+            usernameTextBox = driver.FindElement(By.Id("username-textbox"));
             usernameTextBox.SendKeys("LinterDude");
+            createAccountButton = driver.FindElement(By.Id("submit-create-account"));
             createAccountButton.Click();
 
             //When account creation is completed, he's redirected back to the login page. Now he puts in his new information, and it works.

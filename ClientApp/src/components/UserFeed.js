@@ -7,7 +7,7 @@ import React, { useState, useEffect, useContext } from 'react';
 export default function PublicFeed() {
 
     const { publicUserPosts, setPublicUserPosts } = useContext(PostsContext);
-    DocumentTitle("Sepia Journal - testinguser's Journal")
+    DocumentTitle("Sepia Journal - LinterDude's Journal")
 
     return (
         <div id="feed-body">

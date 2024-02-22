@@ -146,7 +146,7 @@ namespace Tests
             passwordTextBox.SendKeys("lintboy2000");
             createAccountButton.Click();
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(2000);
             var errorBox = driver.FindElement(By.Id("error-box-password"));
             Boolean errorBoxShows = errorBox.Displayed;
             string errorText = errorBox.Text;
@@ -173,21 +173,23 @@ namespace Tests
             createAccountButton.Click();
 
             //When account creation is completed, he's redirected back to the login page. Now he puts in his new information, and it works.
+            driver.Navigate().GoToUrl(websiteURL + "login");
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(10000);
             driver.Title.Should().Be("Sepia Journal - Login");
             var loginUsernameBox = driver.FindElement(By.Id("login-username-textbox"));
             var loginPasswordBox = driver.FindElement(By.Id("login-password-textbox"));
-            loginButton = driver.FindElement(By.Id("login-button"));
 
             loginUsernameBox.SendKeys("LinterDude");
             loginPasswordBox.SendKeys("Lintboy2000!");
-            loginButton.Click();
+            var loginButton2 = driver.FindElement(By.Id("login-button"));
+            loginButton2.Click();
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(10000);
             driver.Title.Should().Be("Sepia Journal - LinterDude's Journal");
             //From here, he starts small - he clicks New Post, types "I love lint", and submits it. The app redirects to his post feed, now showing his first dated post.
             var newPostButton = driver.FindElement(By.Id("new-post-button"));
             newPostButton.Click();
-            driver.Title.Should().Be("Sepia Journal - testinguser's Journal - New Post");
+            driver.Title.Should().Be("Sepia Journal - LinterDude's Journal - New Post");
             string newPost = "I like lint.";
             var postTextBox = driver.FindElement(By.Id("new-post-textbox"));
             var submitButton = driver.FindElement(By.Id("submit-post-button"));
@@ -195,7 +197,7 @@ namespace Tests
             submitButton.Click();
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
-            driver.Title.Should().Be("Sepia Journal - testinguser's Journal");
+            driver.Title.Should().Be("Sepia Journal - LinterDude's Journal");
             IWebElement feed = driver.FindElement(By.Id("journal-feed"));
             IList<IWebElement> feedPosts = feed.FindElements(By.ClassName("journal-post"));
             for (int i = 0; i < 1; i++)

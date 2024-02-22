@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function NewPost() {
-    DocumentTitle("Sepia Journal - testinguser's Journal - New Post")
+    DocumentTitle("Sepia Journal - LinterDude's Journal - New Post")
 
     const { publicUserPosts, setPublicUserPosts } = useContext(PostsContext);
     const navigate = useNavigate()

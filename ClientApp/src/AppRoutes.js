@@ -1,5 +1,5 @@
 import { Home } from "./components/Home";
-import PublicFeed from './components/PublicFeed.js';
+import UserFeed from './components/UserFeed.js';
 import NewPost from "./components/NewPost.js";
 import NotFound from "./components/NotFound.js";
 import Login from './components/Login.js';
@@ -22,7 +22,7 @@ const AppRoutes = [
     },
   {
     path: '/feed',
-    element: <PublicFeed /> //public URL state here?
+    element: <UserFeed /> //public URL state here?
   },
   {
         path: '/new-post',

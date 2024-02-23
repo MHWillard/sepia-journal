@@ -69,3 +69,10 @@ https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployme
 
 2/19
 After a disasterous attempt to get Auth0 to work with this application that broke the app, I rolled back to the last known working version and will go forward from there. I'll look into a new way to support login authentication.
+
+2/23
+Next steps:
+1 See how to properly unit test React components. (React Testing Library)
+2 Revise components to conditionally pass in login state/tokens.
+3 Write tests to test conditional rendering for tokens.
+4 Integrate into full int test and run.

@@ -15,6 +15,8 @@
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <RootNamespace>sepia_journal</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
+	  <JavaScriptTestRoot>src\</JavaScriptTestRoot>
+	  <JavaScriptTestFramework>Jest</JavaScriptTestFramework>
   </PropertyGroup>
 
   <ItemGroup>

@@ -31,8 +31,15 @@
     "workbox-streams": "^6.5.4"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-syntax-jsx": "^7.23.3",
+    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-react": "^7.23.3",
     "@testing-library/react": "^14.2.1",
+    "@testing-library/user-event": "^14.5.2",
     "ajv": "^8.12.0",
+    "babel-jest": "^29.7.0",
+    "babel-plugin-css-modules-transform": "^1.6.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.39.0",
     "eslint-config-react-app": "^7.0.1",
@@ -40,8 +47,11 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
+    "jest-editor-support": "^31.1.2",
     "nan": "^2.17.0",
+    "react-test-renderer": "^18.2.0",
     "typescript": "^4.9.5"
   },
   "overrides": {
@@ -73,5 +83,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest":{
+    "moduleNameMapper": {
+     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+     "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+   }
   }
 }

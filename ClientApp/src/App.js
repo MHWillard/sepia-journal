@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 import { Layout } from './components/Layout';
 import { PostsContext } from './contexts/PostsContext.js'
-import './custom.css';
+//import './custom.css';
 
 /*
 export default class App extends Component {

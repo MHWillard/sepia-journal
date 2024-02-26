@@ -1,7 +1,10 @@
-﻿import { render, screen } from '@testing-library/react'
+﻿/**
+ * @jest-environment jsdom
+ */
+
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import '@testing-library/jest-dom'
-import NavMenu from '../src/components/NavMenu'
+import NavMenu from '../components/NavMenu'
 
 /*
 test: handle component making and passing in login token and testing for render

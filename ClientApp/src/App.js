@@ -3,35 +3,20 @@ import { Route, Routes } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 import { Layout } from './components/Layout';
 import { PostsContext } from './contexts/PostsContext.js'
+import { LoginContext } from './contexts/LoginContext.js'
 //import './custom.css';
-
-/*
-export default class App extends Component {
-    static displayName = App.name;
-
-    const [publicUser, setPublicUser] = useState([]); //publicUserID and PublicUsername together
-    const [publicUserPosts, setPublicUserPosts] = useState([]); //later: {} nested objects
-
-  render() {
-    return (
-      <Layout>
-        <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, ...rest } = route;
-            return <Route key={index} {...rest} element={element} />;
-          })}
-        </Routes>
-      </Layout>
-    );
-  }
-}
-*/
 
 export default function App() {
     const displayName = App.name;
 
     const [publicUser, setPublicUser] = useState([]); //publicUserID and PublicUsername together
     const [publicUserPosts, setPublicUserPosts] = useState([]); //later: {} nested objects
+    const [userLoginData, setUserLoginData] = useState([]);
+
+        useEffect(() => {
+            const newLoginData = { 'username': 'none', 'token': 'none', 'loginFlag': false }
+            setUserLoginData(newLoginData);
+        }, []);
 
         
         function getPosts() {
@@ -45,7 +30,8 @@ export default function App() {
         }, []);
 
     return (
-        <PostsContext.Provider value={{ publicUserPosts, setPublicUserPosts }}>
+        <LoginContext.Provider value={{ userLoginData, setUserLoginData }}>
+            <PostsContext.Provider value={{ publicUserPosts, setPublicUserPosts }}>
         <Layout>
             <Routes>
                 {AppRoutes.map((route, index) => {
@@ -54,6 +40,7 @@ export default function App() {
                 })}
             </Routes>
             </Layout>
-        </PostsContext.Provider>
+            </PostsContext.Provider>
+        </LoginContext.Provider>
     );  
 }

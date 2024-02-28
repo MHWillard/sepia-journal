@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect, useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 import { Layout } from './components/Layout';
@@ -12,10 +12,15 @@ export default function App() {
     const [publicUser, setPublicUser] = useState([]); //publicUserID and PublicUsername together
     const [publicUserPosts, setPublicUserPosts] = useState([]); //later: {} nested objects
     const [userLoginData, setUserLoginData] = useState([]);
+    const [loginFlag, setLoginFlag] = useState(false);
+    const loginData = useContext(LoginContext);
 
-        useEffect(() => {
-            const newLoginData = { 'username': 'none', 'token': 'none', 'loginFlag': false }
+        useEffect((loginData) => {
+            const newLoginData = {username: '',token:''}
+            newLoginData.username = loginData.username;
+            newLoginData.token = loginData.token;
             setUserLoginData(newLoginData);
+            setLoginFlag(loginData.loginFlag);
         }, []);
 
         
@@ -30,7 +35,7 @@ export default function App() {
         }, []);
 
     return (
-        <LoginContext.Provider value={{ userLoginData, setUserLoginData }}>
+        <LoginContext.Provider value={{ loginFlag, setLoginFlag }}>
             <PostsContext.Provider value={{ publicUserPosts, setPublicUserPosts }}>
         <Layout>
             <Routes>

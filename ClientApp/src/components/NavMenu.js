@@ -1,4 +1,4 @@
-import React, { Component, useContext, useState } from 'react';
+import React, { Component, useContext, useState, useEffect } from 'react';
 import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Nav } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { LoginContext } from '../contexts/LoginContext';
@@ -9,6 +9,15 @@ import './NavMenu.css';
 export default function NavMenu(loginFlag) {
     const displayName = NavMenu.name;
     const [isCollapsed, setCollapsed] = useState(true);
+    const [loginToggle, setLoginToggle] = useState(false);
+    const loginData = useContext(LoginContext);
+
+    useEffect(() => {
+      const toggle = loginData.loginFlag;
+      setLoginToggle(toggle);
+    }, [loginData.loginFlag]);
+
+
 
     function toggleNavbar() {
         setCollapsed(!isCollapsed);
@@ -30,10 +39,13 @@ export default function NavMenu(loginFlag) {
           <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!isCollapsed} navbar>
                     <ul className="navbar-nav flex-grow">
                     <Nav fill pills>
+                    <LoginContext.Provider value={loginData}>
                             <NavItem>
-                                <LoginButton loginFlag={loginFlag} />
+                            <NavLink active className="text-dark" id="login-button" href="/login">Login</NavLink>
                             </NavItem>
+                    </LoginContext.Provider>
                         </Nav>
+                    
             </ul>
           </Collapse>
         </Navbar>

@@ -5,6 +5,7 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import NavMenu from '../components/NavMenu'
+import {LoginContext} from '../contexts/LoginContext'
 
 /*
 test: handle component making and passing in login token and testing for render

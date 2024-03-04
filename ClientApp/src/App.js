@@ -14,7 +14,7 @@ export default function App() {
     const [userLoginData, setUserLoginData] = useState([]);
     const [loginFlag, setLoginFlag] = useState(false);
     const loginData = useContext(LoginContext);
-
+    /*
         useEffect((loginData) => {
             const newLoginData = {username: '',token:''}
             newLoginData.username = loginData.username;
@@ -32,20 +32,20 @@ export default function App() {
         useEffect(() => {
             const newPosts = getPosts();
             setPublicUserPosts(newPosts);
-        }, []);
+        }, []); */
 
     return (
         <LoginContext.Provider value={{ loginFlag, setLoginFlag }}>
-            <PostsContext.Provider value={{ publicUserPosts, setPublicUserPosts }}>
-        <Layout>
-            <Routes>
-                {AppRoutes.map((route, index) => {
-                    const { element, ...rest } = route;
-                    return <Route key={index} {...rest} element={element} />;
-                })}
-            </Routes>
+            {/*<PostsContext.Provider value={{ publicUserPosts, setPublicUserPosts }}>*/}
+            <Layout>
+                <Routes>
+                    {AppRoutes.map((route, index) => {
+                        const { element, ...rest } = route;
+                        return <Route key={index} {...rest} element={element} />;
+                    })}
+                </Routes>
             </Layout>
-            </PostsContext.Provider>
+            {/*</PostsContext.Provider>*/}
         </LoginContext.Provider>
     );  
 }

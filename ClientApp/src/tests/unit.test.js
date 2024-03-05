@@ -29,13 +29,11 @@ class LoginData {
     }
 }
 
-test('render login button based on token', async () => {
-    let login = new LoginData(true, 'login_token');
-
-    render(<NavMenu loginData={login} />)
+test('login button shouldn\'t show', async () => {
+    render(<NavMenu />)
 
     const loginButton = await screen.getByRole('login-button');
 
-    expect(loginButton).toNotBe().Null();
+    expect(loginButton).toBe().Null();
 
 });

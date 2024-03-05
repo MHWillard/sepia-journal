@@ -12,16 +12,15 @@ export default function App() {
     const [publicUser, setPublicUser] = useState([]); //publicUserID and PublicUsername together
     const [publicUserPosts, setPublicUserPosts] = useState([]); //later: {} nested objects
     const [userLoginData, setUserLoginData] = useState([]);
-    const [loginFlag, setLoginFlag] = useState(false);
-    const loginData = useContext(LoginContext);
+    const [loggedInFlag, setLoggedInFlag] = useState(false);
+    const loginContext = useContext(LoginContext);
+
+    useEffect(() => {
+        const loginFlag = loginContext.isLoggedIn;
+        setLoggedInFlag(loginFlag);
+    }, [loginContext])
+    
     /*
-        useEffect((loginData) => {
-            const newLoginData = {username: '',token:''}
-            newLoginData.username = loginData.username;
-            newLoginData.token = loginData.token;
-            setUserLoginData(newLoginData);
-            setLoginFlag(loginData.loginFlag);
-        }, []);
 
         
         function getPosts() {
@@ -35,7 +34,7 @@ export default function App() {
         }, []); */
 
     return (
-        <LoginContext.Provider value={{ loginFlag, setLoginFlag }}>
+        <LoginContext.Provider value={loginContext}>
             {/*<PostsContext.Provider value={{ publicUserPosts, setPublicUserPosts }}>*/}
             <Layout>
                 <Routes>

@@ -6,28 +6,30 @@ import './NavMenu.css';
 
 
 
-export default function NavMenu(loginFlag) {
+export default function NavMenu() {
     const displayName = NavMenu.name;
     const [isCollapsed, setCollapsed] = useState(true);
     const [loginToggle, setLoginToggle] = useState(false);
     const loginContext = useContext(LoginContext);
 
     useEffect(() => {
-      const toggle = loginContext.loginFlag;
+      const toggle = loginContext.isLoggedIn;
       setLoginToggle(toggle);
-    }, [loginContext.loginFlag]);
-
-
+    }, [loginContext.isLoggedIn]);
 
     function toggleNavbar() {
         setCollapsed(!isCollapsed);
     }
 
-    function LoginButton(loginFlag) {
-        if (loginFlag) {
-            return <NavLink active className="text-dark" id="login-button" href="/login">Login</NavLink>
-        }
-        return null;
+    function ReturnNavButtons() {
+      if (!loginToggle) {
+        return <Nav fill pills>
+          <NavItem><NavLink active className="text-dark" id="profile-button" href="/profile">Profile</NavLink></NavItem>
+          <NavItem><NavLink active className="text-dark" id="new-post-button" href="/new-post">New Post</NavLink></NavItem>
+          </Nav>
+      } else {
+        return <Nav fill pills><NavItem><NavLink active className="text-dark" id="login-button" href="/login">Login</NavLink></NavItem></Nav>
+      }
     }
 
     return (
@@ -38,14 +40,7 @@ export default function NavMenu(loginFlag) {
           <NavbarToggler onClick={toggleNavbar} className="mr-2" />
           <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!isCollapsed} navbar>
                     <ul className="navbar-nav flex-grow">
-                    <Nav fill pills>
-                      <LoginContext.Provider value={loginToggle}>
-                            <NavItem>
-                            <NavLink active className="text-dark" id="login-button" href="/login" disabled={!loginToggle}>Login</NavLink>
-                            </NavItem>
-                            </LoginContext.Provider>
-                        </Nav>
-                    
+                    <ReturnNavButtons />
             </ul>
           </Collapse>
         </Navbar>

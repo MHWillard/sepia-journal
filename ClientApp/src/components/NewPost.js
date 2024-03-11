@@ -1,12 +1,12 @@
 import DocumentTitle from "./DocumentTitle.js"
-import { PostsContext } from "../contexts/PostsContext.js"
+import { UserPostsContext } from "../contexts/UserPostsContext.js"
 import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function NewPost() {
     DocumentTitle("Sepia Journal - LinterDude's Journal - New Post")
 
-    const { publicUserPosts, setPublicUserPosts } = useContext(PostsContext);
+    const { publicUserPosts, setPublicUserPosts } = useContext(UserPostsContext);
     const navigate = useNavigate()
 
     const handleSubmit = (event) => {

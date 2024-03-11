@@ -1,7 +1,7 @@
 import React, { Component, useContext, useState, useEffect } from 'react';
 import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Nav } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { LoginContext } from '../contexts/LoginContext';
+import { UserDataContext } from './contexts/UserDataContext.js'
 import './NavMenu.css';
 
 
@@ -10,12 +10,12 @@ export default function NavMenu() {
     const displayName = NavMenu.name;
     const [isCollapsed, setCollapsed] = useState(true);
     const [loginToggle, setLoginToggle] = useState(false);
-    const loginContext = useContext(LoginContext);
+    const userDataContext = useContext(UserDataContext);
 
     useEffect(() => {
-      const toggle = loginContext.isLoggedIn;
+        const toggle = userDataContext.isLoggedIn;
       setLoginToggle(toggle);
-    }, [loginContext.isLoggedIn]);
+    }, [userDataContext.isLoggedIn]);
 
     function toggleNavbar() {
         setCollapsed(!isCollapsed);

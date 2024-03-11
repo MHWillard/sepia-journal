@@ -2,8 +2,9 @@ import React, { Component, useState, useEffect, useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 import { Layout } from './components/Layout';
-import { PostsContext } from './contexts/PostsContext.js'
-import { LoginContext } from './contexts/LoginContext.js'
+import { UserPostsContext } from './contexts/UserPostsContext.js'
+import { UserDataContext } from './contexts/UserDataContext.js'
+import { TokenContext } from './contexts/TokenContext.js'
 //import './custom.css';
 
 export default function App() {
@@ -13,12 +14,9 @@ export default function App() {
     const [publicUserPosts, setPublicUserPosts] = useState([]); //later: {} nested objects
     const [userLoginData, setUserLoginData] = useState([]);
     const [loggedInFlag, setLoggedInFlag] = useState(false);
-    const loginContext = useContext(LoginContext);
-
-    useEffect(() => {
-        const loginFlag = loginContext.isLoggedIn;
-        setLoggedInFlag(loginFlag);
-    }, [loginContext])
+    const userDataContext = useContext(UserDataContext);
+    const userPostsContext = useContext(UserPostsContext);
+    const tokenDataContext = useContext(TokenContext);
     
     /*
 
@@ -34,7 +32,7 @@ export default function App() {
         }, []); */
 
     return (
-        <LoginContext.Provider value={loginContext}>
+        <UserDataContext.Provider value={userDataContext}>
             {/*<PostsContext.Provider value={{ publicUserPosts, setPublicUserPosts }}>*/}
             <Layout>
                 <Routes>
@@ -45,6 +43,6 @@ export default function App() {
                 </Routes>
             </Layout>
             {/*</PostsContext.Provider>*/}
-        </LoginContext.Provider>
+        </UserDataContext.Provider>
     );  
 }

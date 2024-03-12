@@ -16,7 +16,7 @@ export default function App() {
     const [loggedInFlag, setLoggedInFlag] = useState(false);
     const userDataContext = useContext(UserDataContext);
     const userPostsContext = useContext(UserPostsContext);
-    const tokenDataContext = useContext(TokenContext);
+    const tokenContext = useContext(TokenContext);
     
     /*
 
@@ -32,17 +32,21 @@ export default function App() {
         }, []); */
 
     return (
-        <UserDataContext.Provider value={userDataContext}>
-            {/*<PostsContext.Provider value={{ publicUserPosts, setPublicUserPosts }}>*/}
-            <Layout>
+        
+        <Layout>
+            <UserDataContext.Provider value={userDataContext}>
+                <UserPostsContext.Provider value={userPostsContext}>
+                    <TokenContext.Provider value={tokenContext}>
                 <Routes>
                     {AppRoutes.map((route, index) => {
                         const { element, ...rest } = route;
                         return <Route key={index} {...rest} element={element} />;
                     })}
                 </Routes>
+                    </TokenContext.Provider>
+                 </UserPostsContext.Provider>
+             </UserDataContext.Provider>
             </Layout>
-            {/*</PostsContext.Provider>*/}
-        </UserDataContext.Provider>
+        
     );  
 }

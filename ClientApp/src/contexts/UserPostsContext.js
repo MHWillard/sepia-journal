@@ -1,3 +1,3 @@
 ﻿import { createContext } from 'react';
 
-export const UserPostsContext = createContext({});
+export const UserPostsContext = createContext({ posts: {} });

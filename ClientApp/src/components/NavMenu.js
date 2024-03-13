@@ -1,28 +1,27 @@
 import React, { Component, useContext, useState, useEffect } from 'react';
 import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Nav } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { UserDataContext } from './contexts/UserDataContext.js'
+import { TokenContext } from '../contexts/TokenContext.js'
 import './NavMenu.css';
-
-
 
 export default function NavMenu() {
     const displayName = NavMenu.name;
     const [isCollapsed, setCollapsed] = useState(true);
-    const [loginToggle, setLoginToggle] = useState(false);
-    const userDataContext = useContext(UserDataContext);
+    const [loginFlag, setLoginFlag] = useState(false);
+    const tokenContext = useContext(TokenContext);
 
     useEffect(() => {
-        const toggle = userDataContext.isLoggedIn;
-      setLoginToggle(toggle);
-    }, [userDataContext.isLoggedIn]);
+        if (tokenContext.token !== '') {
+            setLoginFlag(true);
+        }
+    }, [tokenContext.token]);
 
     function toggleNavbar() {
         setCollapsed(!isCollapsed);
     }
 
     function ReturnNavButtons() {
-      if (!loginToggle) {
+      if (!loginFlag) {
         return <Nav fill pills>
           <NavItem><NavLink active className="text-dark" id="profile-button" href="/profile">Profile</NavLink></NavItem>
           <NavItem><NavLink active className="text-dark" id="new-post-button" href="/new-post">New Post</NavLink></NavItem>
@@ -33,8 +32,7 @@ export default function NavMenu() {
     }
 
     return (
-        <header>
-      
+        <header>   
         <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
           <NavbarBrand tag={Link} to="/">sepia_journal</NavbarBrand>
           <NavbarToggler onClick={toggleNavbar} className="mr-2" />

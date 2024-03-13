@@ -17,10 +17,6 @@ export default function NewPost() {
         navigate('/feed');
     }
 
-    useEffect(() => {
-        navigate("/404")
-    });
-
     return (
         <div id="post-body">
             <div id="post-text-box">

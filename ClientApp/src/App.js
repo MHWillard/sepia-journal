@@ -19,8 +19,6 @@ export default function App() {
     const tokenContext = useContext(TokenContext);
     
     /*
-
-        
         function getPosts() {
             var posts = ["first post", "second post", "third post"]
             return posts

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import LoginForm from './LoginForm.js';
 
 export class Home extends Component {
     static displayName = Home.name;
@@ -7,7 +6,9 @@ export class Home extends Component {
     //for testing purposes: goes to the feed page but later will do actual login auth
   render() {
     return (
-        <LoginForm />
+        <div>
+        <p>Sepia is a journal site where you can update others about what's going on. Log in or create an account and start posting.</p>
+        </div>
     );
   }
 }

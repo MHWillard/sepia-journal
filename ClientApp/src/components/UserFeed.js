@@ -6,21 +6,21 @@ import React, { useState, useEffect, useContext } from 'react';
 
 export default function PublicFeed() {
 
-    const { userPosts, setUserPosts } = useState({});
+    const [ userPosts, setUserPosts ] = useState([]);
     DocumentTitle("Sepia Journal - LinterDude's Journal")
     const posts = useContext(UserPostsContext);
 
 
     useEffect(() => {
-        setUserPosts('');
-    }, [posts, setUserPosts]);
+        setUserPosts([{"post": "4"}, {"post":"5"}, {"post":"6"}]);
+    },[]);
 
     function DefinePosts() {
-        if (userPosts !== '') {
+        if (userPosts) {
             return <div id="journal-feed">
                 {userPosts.map((item, index) => (
                     <div class="journal-post" key={index}>
-                        <p>{item}</p>
+                        <p>{item.post}</p>
                     </div>
                 ))}
             </div>

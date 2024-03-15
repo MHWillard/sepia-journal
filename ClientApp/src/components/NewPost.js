@@ -1,19 +1,19 @@
 import DocumentTitle from "./DocumentTitle.js"
-import { UserPostsContext } from "../contexts/UserPostsContext.js"
-import React, { useContext, useEffect } from 'react';
+import { TokenContext } from "../contexts/TokenContext.js"
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function NewPost() {
     DocumentTitle("Sepia Journal - LinterDude's Journal - New Post")
 
-    const { publicUserPosts, setPublicUserPosts } = useContext(UserPostsContext);
+    const { newPost, setNewPost } = useState('');
+    const token = useContext(TokenContext);
     const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const newPost = document.getElementById("new-post-textbox").value;
-        publicUserPosts.push(newPost);
-        setPublicUserPosts(publicUserPosts);
+        setNewPost(newPost);
         navigate('/feed');
     }
 

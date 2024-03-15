@@ -4,6 +4,8 @@ import NewPost from "./components/NewPost.js";
 import NotFound from "./components/NotFound.js";
 import Login from './components/Login.js';
 import CreateAccount from './components/CreateAccount.js';
+import Profile from './components/Profile.js'
+import ProtectedRoute from './routes/ProtectedRoute.js'
 
 //maybe set state here and bleed itg down to Feed?
 
@@ -15,23 +17,27 @@ const AppRoutes = [
   {
     path: '/login',
     element: <Login />
-    },
-    {
-        path: '/create-account',
-        element: <CreateAccount />
-    },
+   },
+   {
+     path: '/create-account',
+     element: <CreateAccount />
+   },
   {
-    path: '/feed',
+    path: '/feed/*',
     element: <UserFeed /> //public URL state here?
   },
   {
-        path: '/new-post',
-        element: <NewPost />
+    path: '/new-post',
+      element: <ProtectedRoute><NewPost /></ProtectedRoute>
   },
   {
-        path: '/404',
-        element: <NotFound />
-  }
+    path: '/*',
+    element: <NotFound />
+    },
+    {
+        path: '/profile',
+        element: <ProtectedRoute><Profile /></ProtectedRoute>
+    }
     //route where RL = username to produce that user's posts: PublicFeed
     //other route is PersonalFeed which depends on logged in user's information to grab right one
 ];

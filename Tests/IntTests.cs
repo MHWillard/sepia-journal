@@ -123,7 +123,7 @@ namespace Tests
             //He tries to post but there isn't the New Post button. He has to login first. He actually does try to access the new post route, but because he's not logged in, it doesn't let him do it.
             driver.Navigate().GoToUrl(websiteURL + "new-post");
             title = driver.Title;
-            title.Should().Be("Sepia Journal - Page Not Found");
+            title.Should().Be("Sepia Journal - Home");
 
             //He clicks the Login button and it takes him to the Login form. However, he doesn't have an account - he has to make one first. Under the form, he clicks Create New Account.
             var loginButton = driver.FindElement(By.Id("login-button"));

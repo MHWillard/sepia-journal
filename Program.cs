@@ -1,4 +1,6 @@
 using Auth0.AspNetCore.Authentication;
+using FluentAssertions.Common;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,25 @@ builder.Services.AddAuth0WebAppAuthentication(options =>
 });
 
 builder.Services.AddControllersWithViews();
+
+//Adding extra stuff here:
+/*
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+})
+  .AddCookie(o =>
+  {
+      o.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+      o.Cookie.SameSite = SameSiteMode.Strict;
+      o.Cookie.HttpOnly = true;
+  })
+  .AddOpenIdConnect("Auth0", options => ConfigureOpenIdConnect(options));
+*/
+/////
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,7 +44,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

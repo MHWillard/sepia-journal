@@ -13,7 +13,11 @@ const AppRoutes = [
   {
     index: true,
     element: <Home />
-  },
+    },
+    {
+        path: '/home',
+        element: <Home />
+    },
   {
     path: '/login',
     element: <Login />
@@ -29,6 +33,7 @@ const AppRoutes = [
   {
     path: '/new-post',
       element: <ProtectedRoute><NewPost /></ProtectedRoute>
+      //element: <NewPost />
   },
   {
     path: '/*',

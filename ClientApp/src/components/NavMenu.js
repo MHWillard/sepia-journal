@@ -21,7 +21,7 @@ export default function NavMenu() {
     }
 
     function ReturnNavButtons() {
-      if (!loginFlag) {
+      if (loginFlag) {
         return <Nav fill pills>
           <NavItem><NavLink active className="text-dark" id="profile-button" href="/profile">Profile</NavLink></NavItem>
           <NavItem><NavLink active className="text-dark" id="new-post-button" href="/new-post">New Post</NavLink></NavItem>

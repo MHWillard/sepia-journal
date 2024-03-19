@@ -19,7 +19,7 @@ export default function PublicFeed() {
         if (userPosts) {
             return <div id="journal-feed">
                 {userPosts.map((item, index) => (
-                    <div class="journal-post" key={index}>
+                    <div className="journal-post" key={index}>
                         <p>{item.post}</p>
                     </div>
                 ))}

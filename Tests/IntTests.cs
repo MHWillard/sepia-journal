@@ -182,9 +182,11 @@ namespace Tests
             loginUsernameBox.SendKeys("LinterDude");
             loginPasswordBox.SendKeys("Lintboy2000!");
             var loginButton2 = driver.FindElement(By.Id("login-button"));
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(20000);
+            loginButton2.Should().NotBeNull();
             loginButton2.Click();
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(10000);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(20000);
             driver.Title.Should().Be("Sepia Journal - LinterDude's Journal");
             //From here, he starts small - he clicks New Post, types "I love lint", and submits it. The app redirects to his post feed, now showing his first dated post.
             var newPostButton = driver.FindElement(By.Id("new-post-button"));

@@ -18,8 +18,8 @@ export default function LoginForm()
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const username = loginDataObject.username;
-        const url = "https://localhost:44440/feed" + username;
+        const username = loginData.username;
+        const url = "/feed/" + username;
         return navigate(url);
     }
 

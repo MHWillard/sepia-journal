@@ -5,15 +5,19 @@ import { Layout } from './components/Layout';
 import { UserPostsContext } from './contexts/UserPostsContext.js'
 import { UserDataContext } from './contexts/UserDataContext.js'
 import { TokenContext } from './contexts/TokenContext.js'
+import FakeAuthController from './controllers/fakeAuth';
 //import './custom.css';
 
 export default function App() {
     const displayName = App.name;
+    const fakeAuth = new FakeAuthController();
 
     const [publicUser, setPublicUser] = useState([]); //publicUserID and PublicUsername together
     const [publicUserPosts, setPublicUserPosts] = useState([]); //later: {} nested objects
     const [userLoginData, setUserLoginData] = useState([]);
     const [loggedInFlag, setLoggedInFlag] = useState(false);
+    const [token, setToken] = useState(null);
+
     const userDataContext = useContext(UserDataContext);
     const userPostsContext = useContext(UserPostsContext);
     const tokenContext = useContext(TokenContext);
@@ -28,6 +32,11 @@ export default function App() {
             const newPosts = getPosts();
             setPublicUserPosts(newPosts);
         }, []); */
+
+    async function handleLogin() {
+        const token = await fakeAuth.getToken();
+        setToken(token);
+    }
 
     return (
         

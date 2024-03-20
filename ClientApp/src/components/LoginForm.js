@@ -30,7 +30,7 @@ export default function LoginForm()
                 <input type="text" id="login-username-textbox" name="username" value={loginData.username} onChange={handleChange}></input><br></br>
                 <label htmlFor="login-password-textbox">Password:</label><br></br>
                 <input type="text" id="login-password-textbox" name="password" value={loginData.password} onChange={handleChange}></input><br></br>
-                <button type="submit" id="login-button">Submit</button>
+                <button type="submit" id="submit-login-button">Submit</button>
             </form>
         </div>
     );

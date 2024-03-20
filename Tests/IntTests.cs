@@ -181,7 +181,7 @@ namespace Tests
 
             loginUsernameBox.SendKeys("LinterDude");
             loginPasswordBox.SendKeys("Lintboy2000!");
-            var loginButton2 = driver.FindElement(By.Id("login-button"));
+            var loginButton2 = driver.FindElement(By.Id("submit-login-button"));
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(20000);
             loginButton2.Should().NotBeNull();
             loginButton2.Click();

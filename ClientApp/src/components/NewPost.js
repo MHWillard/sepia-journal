@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function NewPost() {
     DocumentTitle("Sepia Journal - LinterDude's Journal - New Post")
 
-    const { newPost, setNewPost } = useState('');
+    const [ newPost, setNewPost ] = useState('');
     const token = useContext(TokenContext);
     const navigate = useNavigate()
 

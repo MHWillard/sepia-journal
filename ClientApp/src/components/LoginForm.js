@@ -1,7 +1,7 @@
 ﻿import { Routes, Route, NavLink, Navigate, useNavigate, Redirect } from 'react-router-dom';
 import React, { useState, useEffect, useContext } from 'react';
 
-export default function LoginForm()
+export default function LoginForm(token, handleLogin)
 {
     const loginDataObject = { username: '', password: '' };
     const [loginData, setLoginData] = useState(loginDataObject);
@@ -18,6 +18,7 @@ export default function LoginForm()
 
     async function handleSubmit(event) {
         event.preventDefault();
+        handleLogin();
         const username = loginData.username;
         const url = "/feed/" + username;
         return navigate(url);

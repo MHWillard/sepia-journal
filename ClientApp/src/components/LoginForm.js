@@ -1,16 +1,13 @@
 ﻿import { Routes, Route, NavLink, Navigate, useNavigate, Redirect } from 'react-router-dom';
 import React, { useState, useEffect, useContext } from 'react';
 
-export default function LoginForm(token, handleLogin)
+export default function LoginForm({ token, handleLogin })
 {
     const loginDataObject = { username: '', password: '' };
     const [loginData, setLoginData] = useState(loginDataObject);
     const navigate = useNavigate();
 
     function handleChange(event) {
-        //get username
-        //build feed URL with username
-        //redirect
         event.preventDefault();
         const { name, value } = event.target;
         setLoginData(prevState => ({ ...prevState, [name]: value }));

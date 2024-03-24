@@ -50,7 +50,7 @@ export default function App() {
                             <Route path="home" element={<Home />} />
                             <Route path="login" element={<Login token={token} handleLogin={handleLogin} />} />
                             <Route path="create-account" element={<CreateAccount />} />
-                            <Route path="feed/*" element={<UserFeed />} />
+                            <Route path="feed/*" element={<UserFeed token={token} />} />
                             <Route path="new-post" element={<ProtectedRoute token={token}><NewPost /></ProtectedRoute>} />
                             <Route path="profile" element={<ProtectedRoute token={token}><Profile /></ProtectedRoute>} />
 

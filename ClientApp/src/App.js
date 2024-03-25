@@ -37,6 +37,10 @@ export default function App() {
             setPublicUserPosts(newPosts);
         }, []); */
 
+    useEffect(() => {
+        setToken(token);
+    }, [token])
+
     async function handleLogin() {
         const token = await fakeAuth.getToken();
         setToken(token);

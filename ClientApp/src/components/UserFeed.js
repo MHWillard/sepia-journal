@@ -14,7 +14,7 @@ export default function UserFeed(token) {
 
     useEffect(() => {
         setUserToken(token);
-    },[token]);
+    },token);
 
     function DefinePosts() {
         if (!userPosts || userPosts === []) {
@@ -32,7 +32,7 @@ export default function UserFeed(token) {
     }
 
     function NewPostButton() {
-        if (!userToken || userToken === null) {
+        if (userToken === null) {
             return <br />
         } else {
             return <div>
